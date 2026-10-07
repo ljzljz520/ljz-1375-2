@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta charset="utf-8"><title>编号目录 · 茶马古道</title>
+<link rel="stylesheet" href="/css/styles.css"></head>
+<body>
+<header><h1 data-i18n="catalog">编号目录 / 打印</h1>
+<nav><a href="/index.html" data-i18n="title">茶马古道资料站</a><a href="/admin.html" data-i18n="admin">管理后台</a></nav>
+<button class="ghost noprint" onclick="setLang(LANG==='zh'?'en':'zh');load()">中/EN</button>
+<button class="ghost noprint" onclick="window.print()" data-i18n="print">打印</button>
+<span class="badge" id="verBadge"></span></header>
+<main>
+  <section><h2 data-i18n="stations">驿站</h2><ol id="catStations"></ol></section>
+  <section><h2>路段 Segments</h2><ol id="catSegments"></ol></section>
+  <section><h2 data-i18n="announcements">公告</h2><ol id="catAnns"></ol></section>
+  <section><div class="disclaimer" id="catDisclaimer"></div>
+  <div class="muted" id="catPendingNote"></div></section>
+</main>
+<script src="/js/i18n.js"></script>
+<script src="/js/catalog.js"></script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta charset="utf-8"><title>管理后台 · 茶马古道</title>
+<link rel="stylesheet" href="/css/styles.css"></head>
+<body>
+<header><h1>管理后台</h1><nav><a href="/index.html">访客页</a><a href="/catalog.html">编号目录</a></nav>
+<span class="badge" id="verBadge"></span></header>
+<main>
+  <section>
+    <h2>访问令牌</h2>
+    <input id="token" type="password" placeholder="X-Admin-Token" value="admin-dev-token">
+    <button onclick="saveTok()">保存</button>
+  </section>
+  <section>
+    <h2>待确认队列（同名驿站 / 待核路段）</h2>
+    <div id="pending"></div>
+  </section>
+  <section>
+    <h2>发布公告（封路 / 通知）</h2>
+    <label>类型</label><select id="aKind"><option value="closure">封路 closure</option><option value="notice">通知 notice</option></select>
+    <label>路段</label><select id="aSeg"></select>
+    <label>生效起</label><input type="datetime-local" id="aFrom">
+    <label>生效止</label><input type="datetime-local" id="aTo">
+    <input id="aTitleZh" placeholder="标题（中）"><input id="aTitleEn" placeholder="Title (EN)">
+    <select id="aSev"><option>warning</option><option>critical</option><option>info</option></select>
+    <button onclick="publish()">发布</button>
+    <div class="muted">发布时间 = 服务器当前时间；可能晚于生效时间（迟到公告）。</div>
+    <div id="annList"></div>
+  </section>
+  <section>
+    <h2>已核对相邻路段与交通（窗口）</h2>
+    <table id="segTable"><thead><tr><th>#</th><th>区间</th><th>方式</th><th>时长</th><th>体力/来源</th><th>窗口</th><th>状态</th><th></th></tr></thead><tbody></tbody></table>
+    <h3>新增窗口</h3>
+    <select id="wSeg"></select>
+    <select id="wKind"><option value="daily">每日</option><option value="range">区间</option></select>
+    <select id="wEffect"><option value="open">开放</option><option value="closed">封闭</option></select>
+    <input id="wStart" placeholder="08:00 或 2026-11-01T00:00:00+00:00">
+    <input id="wEnd" placeholder="10:00 或 2026-11-05T00:00:00+00:00">
+    <button onclick="addWindow()">添加</button>
+  </section>
+  <section>
+    <h2>已审路线版本（可回退）</h2>
+    <div id="rvList"></div>
+  </section>
+</main>
+<script src="/js/i18n.js"></script>
+<script src="/js/admin.js"></script>
+</body>
+</html>

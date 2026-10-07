@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>茶马古道资料站</title>
+<link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+<header>
+  <h1 data-i18n="title">茶马古道资料站</h1>
+  <nav>
+    <a href="/admin.html" data-i18n="admin">管理后台</a>
+    <a href="/catalog.html" data-i18n="catalog">编号目录 / 打印</a>
+  </nav>
+  <span class="badge" id="netBadge">…</span>
+  <span class="badge" id="verBadge"></span>
+  <button class="ghost" onclick="setLang(LANG==='zh'?'en':'zh');renderAll()">中/EN</button>
+  <button class="ghost" id="bundleBtn" data-i18n="load_bundle">下载离线包</button>
+</header>
+<main>
+  <section>
+    <h2 data-i18n="stations">驿站</h2>
+    <input id="q" placeholder="搜索 / Search"> <button onclick="loadStations()" data-i18n="search">搜索</button>
+    <div id="sameName" class="gap-note" style="display:none"></div>
+    <table id="stationTable"><thead><tr>
+      <th>#</th><th>Code</th><th>Name</th><th data-i18n="elevation">海拔</th><th data-i18n="verify">核验状态</th><th></th>
+    </tr></thead><tbody></tbody></table>
+    <div id="stationDetail"></div>
+  </section>
+
+  <section>
+    <h2 data-i18n="planner">路线规划</h2>
+    <label data-i18n="from">起点</label> <select id="fromSel"></select>
+    <label data-i18n="to">终点</label> <select id="toSel"></select>
+    <label data-i18n="depart">出发时间</label> <input type="datetime-local" id="depart" value="2026-10-26T07:00">
+    <label><input type="checkbox" id="mWalk" checked> <span data-i18n="mode_walk">徒步</span></label>
+    <label><input type="checkbox" id="mBus" checked> <span data-i18n="mode_bus">班车</span></label>
+    <button onclick="runPlan()" data-i18n="plan">开始规划</button>
+    <div id="planResult"></div>
+    <svg id="map" viewBox="0 0 1000 360" preserveAspectRatio="xMidYMid meet"></svg>
+    <div class="disclaimer" id="planDisclaimer" style="display:none"></div>
+  </section>
+
+  <section>
+    <h2 data-i18n="profile">高程剖面</h2>
+    <canvas id="profile"></canvas>
+    <div class="muted" id="profilePolicy"></div>
+  </section>
+
+  <section>
+    <h2 data-i18n="compare">方案比较</h2>
+    <button onclick="runCompare()" data-i18n="compare">方案比较</button>
+    <div class="grid2" id="compareResult"></div>
+    <div class="disclaimer" id="compareDisclaimer" style="display:none"></div>
+  </section>
+
+  <section>
+    <h2 data-i18n="favorites">收藏计划</h2>
+    <div id="favList"></div>
+    <div id="favChanges"></div>
+  </section>
+
+  <section>
+    <h2 data-i18n="historic">历史商路</h2>
+    <div class="disclaimer" data-i18n="historic_note">历史叙事内容，不能直接视为现行徒步路线。</div>
+    <div id="historicList"></div>
+  </section>
+
+  <section>
+    <h2 data-i18n="announcements">公告</h2>
+    <div id="annList"></div>
+  </section>
+</main>
+<script src="/js/i18n.js"></script>
+<script src="/js/app.js"></script>
+</body>
+</html>
