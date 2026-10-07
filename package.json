@@ -1,0 +1,11 @@
+{
+  "name": "tea-horse-road-station",
+  "version": "1.0.0",
+  "description": "茶马古道资料站：驿站/高程剖面、已核对相邻路段、交通与公告、偏好筛选与受约束图搜索",
+  "type": "module",
+  "scripts": {
+    "start": "node server/api.js",
+    "test": "node --test"
+  },
+  "engines": { "node": ">=18" }
+}
